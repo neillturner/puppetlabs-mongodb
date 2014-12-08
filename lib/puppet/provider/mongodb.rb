@@ -23,7 +23,7 @@ class Puppet::Provider::Mongodb < Puppet::Provider
         cmd = mongorc_file + cmd
     end
 
-    out = mongo([db, '--quiet','--authenticationDatabase admin', '--eval', cmd])
+    out = mongo([db, '--quiet','--authenticationDatabase admin', '--eval', '\'#{cmd}\''])
 
     out.gsub!(/ObjectId\(([^)]*)\)/, '\1')
     out
