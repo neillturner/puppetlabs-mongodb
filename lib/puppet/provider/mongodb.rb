@@ -46,9 +46,15 @@ class Puppet::Provider::Mongodb < Puppet::Provider
     v = self.mongo_version
     ! v[/^2\.4\./].nil?
   end
+  
+  def self.mongo_26?
+    v = self.mongo_version
+    ! v[/^2\.6\./].nil?
+  end
 
   def mongo_24?
-    self.class.mongo_24?
+    true
+    #self.class.mongo_24? || self.class.mongo_26?
   end
 
 end
